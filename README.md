@@ -13,6 +13,7 @@ The roadmap combines architecture fundamentals, distributed systems, Azure platf
 
 - [`ARCHITECTURE_PREPARATION_ROADMAP.pdf`](ARCHITECTURE_PREPARATION_ROADMAP.pdf) — publication-ready guide
 - [`ARCHITECTURE_PREPARATION_ROADMAP.md`](ARCHITECTURE_PREPARATION_ROADMAP.md) — editable source
+- [`AI_EVAL_INTERVIEW_QA.md`](AI_EVAL_INTERVIEW_QA.md) — AI-evaluation interview Q&A with worked examples
 - [`print.html`](print.html) — print-ready HTML
 - [`scripts/build_pdf.py`](scripts/build_pdf.py) — reproducible PDF build
 - [`citations/ledger.json`](citations/ledger.json) — source-to-citation ledger
