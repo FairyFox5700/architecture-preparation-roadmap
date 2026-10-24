@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Architecture Preparation Roadmap — Iryna Tyshchenko</title>
+<style>
+@page {
+  size: A4;
+  margin: 17mm 17mm 19mm 17mm;
+  @bottom-center {
+    content: "Iryna Tyshchenko  •  Architecture Preparation  •  " counter(page);
+    color: #667085;
+    font-size: 8.5pt;
+  }
+}
+* { box-sizing: border-box; }
+html { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+body {
+  margin: 0;
+  color: #17223b;
+  background: white;
+  font: 10.2pt/1.5 "Segoe UI", Arial, sans-serif;
+}
+a { color: #1658a6; text-decoration: none; overflow-wrap: anywhere; }
+.cover {
+  page-break-after: always;
+  height: 250mm;
+  padding: 25mm 17mm 18mm;
+  color: white;
+  background:
+    radial-gradient(circle at 85% 12%, rgba(232,122,45,.75), transparent 25%),
+    linear-gradient(145deg, #101d4f 0%, #1b2a6b 56%, #29499a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cover:after {
+  content: "";
+  position: absolute;
+  width: 155mm; height: 155mm;
+  right: -65mm; bottom: -72mm;
+  border: 2px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 18mm rgba(255,255,255,.035), 0 0 0 38mm rgba(255,255,255,.025);
+}
+.kicker {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f6c8aa;
+  color: #1b2a6b;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.cover h1 { font-size: 31pt; line-height: 1.08; margin: 24mm 0 7mm; max-width: 145mm; color: white; }
+.cover h2 { font-size: 15pt; line-height: 1.35; font-weight: 500; color: #e5ebff; max-width: 150mm; border: 0; }
+.cover .meta { margin-top: 28mm; font-size: 11pt; line-height: 1.75; color: #edf1ff; }
+.cover .author { position: absolute; bottom: 23mm; left: 17mm; font-weight: 650; color: white; }
+.toc-page { page-break-after: always; }
+.toc-page h1 { margin-top: 0; }
+.toc { column-count: 2; column-gap: 9mm; }
+.toc ul { list-style: none; padding-left: 0; margin: 0; }
+.toc > ul > li { margin-bottom: 2mm; }
+.toc li { break-inside: avoid; margin: 0 0 4px; font-size: 9.4pt; }
+.toc li li { padding-left: 10px; font-size: 8.9pt; }
+.toc a { color: #1b2a6b; }
+h1 {
+  color: #1b2a6b;
+  font-size: 22pt;
+  line-height: 1.2;
+  margin: 0 0 9mm;
+  page-break-before: auto;
+  break-before: auto;
+  border-bottom: 4px solid #e87a2d;
+  padding-bottom: 4mm;
+}
+h2 {
+  color: #1b2a6b;
+  font-size: 15pt;
+  line-height: 1.25;
+  margin: 9mm 0 4mm;
+  border-bottom: 1px solid #cad3eb;
+  padding-bottom: 2mm;
+  break-after: avoid;
+}
+h3 {
+  color: #29499a;
+  font-size: 11.7pt;
+  margin: 6mm 0 2mm;
+  break-after: avoid;
+}
+p { margin: 0 0 3.2mm; orphans: 3; widows: 3; }
+ul, ol { margin: 1.5mm 0 4mm 5mm; padding-left: 5mm; }
+li { margin: 0 0 1.6mm; }
+li > ul, li > ol { margin-top: 1.3mm; }
+blockquote {
+  margin: 5mm 0;
+  border-left: 4px solid #e87a2d;
+  background: #fff4ec;
+  padding: 4mm 5mm;
+  color: #493528;
+}
+code { background: #eef2fb; color: #1b2a6b; border-radius: 3px; padding: 1px 3px; }
+pre {
+  white-space: pre-wrap;
+  background: #101d4f;
+  color: #f7f9ff;
+  padding: 4mm;
+  border-radius: 6px;
+  font-size: 8.7pt;
+  break-inside: avoid;
+}
+hr { border: 0; border-top: 1px solid #d6dceb; margin: 8mm 0; }
+strong { color: #12245f; }
+.citation-note {
+  background: #eef6f1;
+  border: 1px solid #b8d8c5;
+  color: #214d35;
+  padding: 3mm 4mm;
+  border-radius: 5px;
+  margin-bottom: 7mm;
+}
+#sources + ul, #sources ~ ul { font-size: 9pt; line-height: 1.4; margin-bottom: 2.5mm; }
+#sources ~ ul li { break-inside: avoid; margin-bottom: 1.8mm; }
+#the-shortest-effective-path { break-before: page; page-break-before: always; }
+@media print {
+  h1, h2, h3 { page-break-after: avoid; }
+  li, blockquote, pre { page-break-inside: avoid; }
+}
+</style></head><body>
+<section class="cover">
+  <span class="kicker">Targeted 12-week roadmap</span>
+  <h1>Architecture Preparation Roadmap</h1>
+  <h2>Azure · Distributed Systems · Agentic AI · FDE Readiness</h2>
+  <div class="meta">
+    Project-led curriculum<br>
+    Current certification strategy<br>
+    Curated primary-source library<br>
+    Production-readiness scorecards
+  </div>
+  <div class="author">Iryna Tyshchenko · October 2026</div>
+</section>
+<section class="toc-page">
+  <h1>Contents</h1>
+  <p class="citation-note">Use the roadmap sequentially. Use the resource library selectively. Certifications validate demonstrated ability; they do not replace architecture evidence.</p>
+  <div class="toc"><div class="toc">
+<ul>
+<li><a href="#how-to-use-this-guide">How to use this guide</a></li>
+<li><a href="#1-target-capability-model">1. Target capability model</a><ul>
+<li><a href="#11-what-an-architect-must-demonstrate">1.1 What an architect must demonstrate</a></li>
+<li><a href="#12-evidence-portfolio">1.2 Evidence portfolio</a></li>
+</ul>
+</li>
+<li><a href="#2-twelve-week-project-led-roadmap">2. Twelve-week project-led roadmap</a><ul>
+<li><a href="#week-1-requirements-constraints-and-architecture-framing">Week 1 — Requirements, constraints, and architecture framing</a></li>
+<li><a href="#week-2-architecture-decisions-and-service-selection-discipline">Week 2 — Architecture decisions and service-selection discipline</a></li>
+<li><a href="#week-3-data-architecture-and-consistency">Week 3 — Data architecture and consistency</a></li>
+<li><a href="#week-4-apis-events-and-third-party-integrations">Week 4 — APIs, events, and third-party integrations</a></li>
+<li><a href="#week-5-distributed-workflows-and-messaging">Week 5 — Distributed workflows and messaging</a></li>
+<li><a href="#week-6-azure-platform-networking-identity-and-governance">Week 6 — Azure platform, networking, identity, and governance</a></li>
+<li><a href="#week-7-reliability-observability-operations-and-cost">Week 7 — Reliability, observability, operations, and cost</a></li>
+<li><a href="#week-8-performance-and-evidence-driven-architecture">Week 8 — Performance and evidence-driven architecture</a></li>
+<li><a href="#week-9-rag-and-governed-ai-applications">Week 9 — RAG and governed AI applications</a></li>
+<li><a href="#week-10-agentic-systems-and-safe-actions">Week 10 — Agentic systems and safe actions</a></li>
+<li><a href="#week-11-architecture-review-and-stakeholder-communication">Week 11 — Architecture review and stakeholder communication</a></li>
+<li><a href="#week-12-capstone-defence-and-interview-readiness">Week 12 — Capstone defence and interview readiness</a></li>
+</ul>
+</li>
+<li><a href="#3-certification-strategy-for-current-architect-roles">3. Certification strategy for current architect roles</a><ul>
+<li><a href="#31-market-reading">3.1 Market reading</a></li>
+<li><a href="#32-priority-1-azure-solutions-architect-expert">3.2 Priority 1 — Azure Solutions Architect Expert</a></li>
+<li><a href="#33-priority-2-azure-ai-apps-and-agents-developer-associate">3.3 Priority 2 — Azure AI Apps and Agents Developer Associate</a></li>
+<li><a href="#34-priority-3-agentic-ai-business-solutions-architect-expert">3.4 Priority 3 — Agentic AI Business Solutions Architect Expert</a></li>
+<li><a href="#35-specialization-credentials">3.5 Specialization credentials</a></li>
+<li><a href="#36-recommended-certification-order">3.6 Recommended certification order</a></li>
+<li><a href="#37-what-not-to-prioritize">3.7 What not to prioritize</a></li>
+</ul>
+</li>
+<li><a href="#4-targeted-resource-library">4. Targeted resource library</a><ul>
+<li><a href="#p0-use-throughout-the-roadmap">P0 — Use throughout the roadmap</a></li>
+<li><a href="#p1-use-for-specific-gaps">P1 — Use for specific gaps</a></li>
+<li><a href="#p2-optional-interview-support">P2 — Optional interview support</a></li>
+</ul>
+</li>
+<li><a href="#5-weekly-operating-rhythm">5. Weekly operating rhythm</a><ul>
+<li><a href="#monday-learn-and-frame">Monday — Learn and frame</a></li>
+<li><a href="#tuesday-design">Tuesday — Design</a></li>
+<li><a href="#wednesday-build">Wednesday — Build</a></li>
+<li><a href="#thursday-review">Thursday — Review</a></li>
+<li><a href="#friday-explain">Friday — Explain</a></li>
+<li><a href="#weekend-certification-lane">Weekend — Certification lane</a></li>
+</ul>
+</li>
+<li><a href="#6-architecture-review-scorecard">6. Architecture review scorecard</a></li>
+<li><a href="#7-final-production-readiness-checklist">7. Final production-readiness checklist</a><ul>
+<li><a href="#design">Design</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#reliability">Reliability</a></li>
+<li><a href="#delivery-and-operations">Delivery and operations</a></li>
+<li><a href="#ai-quality">AI quality</a></li>
+</ul>
+</li>
+<li><a href="#8-the-shortest-effective-path">8. The shortest effective path</a><ul>
+<li><a href="#sources">Sources</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<main><h2 id="how-to-use-this-guide">How to use this guide</h2>
+<p>This is not a list to memorize. It is a decision-making curriculum. Every week produces evidence that you can clarify an ambiguous problem, select a safe default, identify failure boundaries, explain trade-offs, and revise the design after feedback.</p>
+<p>Use one coherent capstone throughout: a <strong>C#/.NET commerce platform with an AI customer-operations agent</strong>. The platform accepts orders, reserves inventory, processes payments, coordinates delivery, answers support questions from governed enterprise data, and escalates consequential actions to a human.</p>
+<p>For every architectural decision, answer five questions:</p>
+<ol>
+<li>What requirement drives this choice?</li>
+<li>What is the safe default?</li>
+<li>Under which measurable conditions does it stop fitting?</li>
+<li>What alternative would replace it?</li>
+<li>What test or operational signal validates the decision?</li>
+</ol>
+<p>The Azure Architecture Center is the main reference library; the Well-Architected Framework provides the quality model, and Cloud Design Patterns supplies reusable implementation patterns.[1][2][3]</p>
+<hr />
+<h1 id="1-target-capability-model">1. Target capability model</h1>
+<h2 id="11-what-an-architect-must-demonstrate">1.1 What an architect must demonstrate</h2>
+<h3 id="problem-framing">Problem framing</h3>
+<ul>
+<li>Translate business goals into functional and non-functional requirements.</li>
+<li>Expose constraints, assumptions, dependencies, and unresolved questions.</li>
+<li>Define measurable targets for latency, throughput, availability, recovery, security, privacy, and cost.</li>
+<li>Distinguish a reversible experiment from a high-cost irreversible decision.</li>
+</ul>
+<h3 id="system-design">System design</h3>
+<ul>
+<li>Set system boundaries and ownership.</li>
+<li>Select compute, storage, integration, networking, and identity approaches.</li>
+<li>Design for failure rather than only for the happy path.</li>
+<li>Describe consistency, ordering, idempotency, retries, and reconciliation precisely.</li>
+<li>Plan deployment, observability, rollback, and incident ownership.</li>
+</ul>
+<h3 id="ai-architecture">AI architecture</h3>
+<ul>
+<li>Separate deterministic workflows from model-driven judgment.</li>
+<li>Ground model responses in governed data.</li>
+<li>Constrain tool permissions and propagate user identity.</li>
+<li>Evaluate quality, safety, latency, and cost continuously.</li>
+<li>Require human approval for high-impact or irreversible actions.</li>
+</ul>
+<h3 id="fde-and-consulting-behavior">FDE and consulting behavior</h3>
+<ul>
+<li>Discover the real customer problem before proposing technology.</li>
+<li>Build a thin vertical slice quickly.</li>
+<li>Explain the same design differently to executives, product leaders, security teams, and engineers.</li>
+<li>Leave a maintainable system, decision record, and operating model—not only a demo.</li>
+</ul>
+<h2 id="12-evidence-portfolio">1.2 Evidence portfolio</h2>
+<p>By the end, your repository should contain:</p>
+<ul>
+<li>1 system context diagram</li>
+<li>3 container/deployment diagrams</li>
+<li>6 sequence or state diagrams</li>
+<li>8–12 Architecture Decision Records (ADRs)</li>
+<li>API and event contracts</li>
+<li>Threat model</li>
+<li>Reliability targets and failure-mode analysis</li>
+<li>Cost model</li>
+<li>Load-test report</li>
+<li>AI evaluation dataset and results</li>
+<li>Operations runbook</li>
+<li>10-minute executive presentation</li>
+<li>30–60 second interview answer for every major decision</li>
+</ul>
+<p>Use the C4 model for diagrams and ADRs for decisions. C4 encourages multiple abstraction levels; ADRs preserve context, options, consequences, and status.[5][6]</p>
+<hr />
+<h1 id="2-twelve-week-project-led-roadmap">2. Twelve-week project-led roadmap</h1>
+<h2 id="week-1-requirements-constraints-and-architecture-framing">Week 1 — Requirements, constraints, and architecture framing</h2>
+<h3 id="learn">Learn</h3>
+<ul>
+<li>Functional versus non-functional requirements</li>
+<li>Quality attributes and architectural drivers</li>
+<li>Stakeholder mapping</li>
+<li>Assumptions, risks, and decision reversibility</li>
+<li>Capacity-estimation fundamentals</li>
+<li>C4 system context diagrams</li>
+</ul>
+<h3 id="build">Build</h3>
+<p>Write a two-page brief for the commerce platform:</p>
+<ul>
+<li>100,000 monthly active users</li>
+<li>bursty checkout traffic</li>
+<li>external payment and delivery providers</li>
+<li>regulated customer data</li>
+<li>AI support agent with read and write tools</li>
+<li>explicit cost ceiling</li>
+</ul>
+<p>Create:</p>
+<ul>
+<li>System context diagram</li>
+<li>Stakeholder map</li>
+<li>Assumption log</li>
+<li>Initial risk register</li>
+<li>Capacity estimate</li>
+</ul>
+<h3 id="completion-test">Completion test</h3>
+<p>You can explain why the architecture cannot be selected before availability, consistency, data residency, latency, integration, and cost constraints are known.</p>
+<h3 id="primary-resources">Primary resources</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/">Azure Architecture Center</a>[1]</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework">Azure Well-Architected Framework</a>[2]</li>
+<li><a href="https://c4model.com/diagrams.html">C4 diagrams</a>[5]</li>
+</ul>
+<hr />
+<h2 id="week-2-architecture-decisions-and-service-selection-discipline">Week 2 — Architecture decisions and service-selection discipline</h2>
+<h3 id="learn_1">Learn</h3>
+<ul>
+<li>Safe defaults versus premature complexity</li>
+<li>Build versus buy</li>
+<li>Managed service versus self-managed platform</li>
+<li>Coupling, cohesion, modular monoliths, and microservices</li>
+<li>ADR structure and lifecycle</li>
+<li>Technology-selection benchmarks</li>
+</ul>
+<h3 id="build_1">Build</h3>
+<p>Write ADRs for:</p>
+<ol>
+<li>Modular monolith versus microservices</li>
+<li>Azure Container Apps versus AKS</li>
+<li>Azure SQL versus Cosmos DB</li>
+<li>Synchronous versus asynchronous order workflow</li>
+</ol>
+<p>For each ADR include context, options, decision, positive and negative consequences, exit criteria, and verification plan.</p>
+<h3 id="completion-test_1">Completion test</h3>
+<p>You can defend Container Apps as a default while naming the operational, networking, scheduling, or platform-control requirements that could justify AKS. Microsoft’s compute and container-selection guides should inform the comparison rather than product familiarity alone.[32][33]</p>
+<h3 id="primary-resources_1">Primary resources</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record">Maintain an ADR</a>[6]</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree">Compute decision tree</a>[32]</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/guide/container-service-general-considerations">Container-service considerations</a>[33]</li>
+<li><em>Fundamentals of Software Architecture</em></li>
+<li><em>Software Architecture: The Hard Parts</em></li>
+</ul>
+<hr />
+<h2 id="week-3-data-architecture-and-consistency">Week 3 — Data architecture and consistency</h2>
+<h3 id="learn_2">Learn</h3>
+<ul>
+<li>Relational modelling, normalization, and indexes</li>
+<li>Transactions and isolation</li>
+<li>Optimistic concurrency</li>
+<li>Replication and partitioning</li>
+<li>Eventual consistency</li>
+<li>Caching and invalidation</li>
+<li>Change data capture and audit history</li>
+<li>Vector retrieval as a specialized index, not a source of truth</li>
+</ul>
+<h3 id="build_2">Build</h3>
+<p>Design:</p>
+<ul>
+<li>Order, inventory, payment, and shipment data models</li>
+<li>Transaction boundaries</li>
+<li>Cache policy</li>
+<li>Audit/event history</li>
+<li>Data-retention policy</li>
+<li>RAG ingestion path from approved support content</li>
+</ul>
+<p>Create failure scenarios for duplicate checkout requests, stale inventory, payment timeout with unknown outcome, and delayed events.</p>
+<h3 id="completion-test_2">Completion test</h3>
+<p>You can state exactly where strong consistency is required, where eventual consistency is acceptable, and how reconciliation restores correctness.</p>
+<h3 id="primary-resources_2">Primary resources</h3>
+<ul>
+<li><em>Designing Data-Intensive Applications, 2nd Edition</em>[7]</li>
+<li><a href="https://builder.aws.com/learn/topics/builders-library">Amazon Builders’ Library</a>[10]</li>
+<li>MIT distributed-systems material for deeper study[8]</li>
+</ul>
+<hr />
+<h2 id="week-4-apis-events-and-third-party-integrations">Week 4 — APIs, events, and third-party integrations</h2>
+<h3 id="learn_3">Learn</h3>
+<ul>
+<li>REST resource and operation modelling</li>
+<li>OpenAPI and AsyncAPI contracts</li>
+<li>API versioning and pagination</li>
+<li>Idempotency keys</li>
+<li>Webhook signatures and replay prevention</li>
+<li>Timeouts, retries, backoff, jitter, and circuit breakers</li>
+<li>Outbox/inbox patterns</li>
+<li>Durable deduplication</li>
+<li>Long-running operations</li>
+<li>Reconciliation after unknown outcomes</li>
+</ul>
+<h3 id="build_3">Build</h3>
+<p>Create:</p>
+<ul>
+<li>Checkout REST contract</li>
+<li>Payment webhook contract</li>
+<li>Order event schema</li>
+<li>Delivery-provider adapter</li>
+<li>Idempotency and deduplication design</li>
+<li>Sequence diagram showing payment timeout, retry, duplicate callback, and reconciliation</li>
+</ul>
+<p>Microsoft publishes REST API guidelines, while AsyncAPI standardizes event-driven interface descriptions.[11][12]</p>
+<h3 id="completion-test_3">Completion test</h3>
+<p>You never claim end-to-end exactly-once effects without defining the transaction boundary. You can explain that a timeout means “outcome unknown,” not “operation failed.”</p>
+<h3 id="primary-resources_3">Primary resources</h3>
+<ul>
+<li><a href="https://github.com/microsoft/api-guidelines">Microsoft REST API Guidelines</a>[11]</li>
+<li><a href="https://www.asyncapi.com/">AsyncAPI</a>[12]</li>
+<li><a href="https://owasp.org/API-Security/">OWASP API Security</a>[39]</li>
+<li>Azure Cloud Design Patterns[3]</li>
+</ul>
+<hr />
+<h2 id="week-5-distributed-workflows-and-messaging">Week 5 — Distributed workflows and messaging</h2>
+<h3 id="learn_4">Learn</h3>
+<ul>
+<li>Queues versus streams</li>
+<li>Competing consumers</li>
+<li>Partitioning and per-aggregate ordering</li>
+<li>Backpressure and load levelling</li>
+<li>Dead-letter queues</li>
+<li>Saga choreography versus orchestration</li>
+<li>Compensation</li>
+<li>Poison-message handling</li>
+<li>Consumer idempotency</li>
+</ul>
+<h3 id="build_4">Build</h3>
+<p>Implement a minimal order workflow using C#/.NET and Azure Service Bus or an equivalent local broker:</p>
+<ol>
+<li>Order accepted</li>
+<li>Inventory reserved</li>
+<li>Payment authorized</li>
+<li>Shipment requested</li>
+<li>Compensation if payment or inventory fails</li>
+</ol>
+<p>Record <code>orderId</code>, <code>operationId</code>, <code>eventId</code>, and <code>version</code> across every step. Add bounded retries and a reconciliation worker.</p>
+<h3 id="completion-test_4">Completion test</h3>
+<p>You can explain ordering scope, duplicate handling, poison-message isolation, and recovery after a consumer crashes between side effect and acknowledgement.</p>
+<h3 id="primary-resources_4">Primary resources</h3>
+<ul>
+<li>Cloud Design Patterns[3]</li>
+<li><em>Enterprise Integration Patterns</em></li>
+<li><em>Designing Data-Intensive Applications</em>[7]</li>
+<li><a href="https://pdos.csail.mit.edu/6.824/index.html">MIT 6.5840 Distributed Systems</a>[8]</li>
+</ul>
+<hr />
+<h2 id="week-6-azure-platform-networking-identity-and-governance">Week 6 — Azure platform, networking, identity, and governance</h2>
+<h3 id="learn_5">Learn</h3>
+<ul>
+<li>Subscriptions, management groups, policy, tags, and budgets</li>
+<li>Landing zones and environment separation</li>
+<li>Entra ID, managed identities, workload identities, and RBAC</li>
+<li>Key Vault and secretless design</li>
+<li>Private networking, Private Link, DNS, and egress control</li>
+<li>Container Apps, Functions, App Service, and AKS selection</li>
+<li>Infrastructure as Code with Bicep or Terraform</li>
+</ul>
+<h3 id="build_5">Build</h3>
+<p>Produce an Azure deployment design with:</p>
+<ul>
+<li>Separate development, test, and production environments</li>
+<li>Managed identities instead of embedded credentials</li>
+<li>Private data-plane connectivity</li>
+<li>Least-privilege roles</li>
+<li>Policy controls and cost budgets</li>
+<li>Infrastructure-as-Code skeleton</li>
+</ul>
+<p>The Cloud Adoption Framework adds organization, governance, and landing-zone context that an application-only design misses.[4]</p>
+<h3 id="completion-test_5">Completion test</h3>
+<p>You can trace one user request through identity, network, compute, data, secrets, monitoring, and policy boundaries.</p>
+<h3 id="primary-resources_5">Primary resources</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview">Cloud Adoption Framework</a>[4]</li>
+<li>Azure Architecture Center[1]</li>
+<li>Well-Architected Framework[2]</li>
+<li><a href="https://azure.microsoft.com/en-us/pricing/calculator/">Azure pricing calculator</a>[37]</li>
+</ul>
+<hr />
+<h2 id="week-7-reliability-observability-operations-and-cost">Week 7 — Reliability, observability, operations, and cost</h2>
+<h3 id="learn_6">Learn</h3>
+<ul>
+<li>SLI, SLO, and error budget</li>
+<li>Availability and dependency budgets</li>
+<li>RTO and RPO</li>
+<li>Multi-zone and multi-region decisions</li>
+<li>Health models and graceful degradation</li>
+<li>Metrics, logs, traces, correlation IDs, and business telemetry</li>
+<li>Deployment strategies and rollback</li>
+<li>FinOps and unit economics</li>
+</ul>
+<h3 id="build_6">Build</h3>
+<p>Create:</p>
+<ul>
+<li>Service-level objectives</li>
+<li>Dependency map</li>
+<li>Failure-mode and effects analysis</li>
+<li>Dashboard specification</li>
+<li>Alert-routing rules</li>
+<li>Rollback procedure</li>
+<li>Disaster-recovery exercise</li>
+<li>Cost per 1,000 orders and per AI support conversation</li>
+</ul>
+<p>Microsoft provides explicit reliability-review, threat-modelling, and observability guidance; use the checklists as design review inputs, not as compliance theatre.[34][35][36]</p>
+<h3 id="completion-test_6">Completion test</h3>
+<p>You can explain what the customer experiences when each dependency fails and which signal triggers which owner action.</p>
+<h3 id="primary-resources_6">Primary resources</h3>
+<ul>
+<li><a href="https://sre.google/books/">Google SRE books</a>[9]</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/well-architected/reliability/checklist">Reliability checklist</a>[34]</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/observability">Observability strategy</a>[36]</li>
+<li><em>Release It!</em></li>
+</ul>
+<hr />
+<h2 id="week-8-performance-and-evidence-driven-architecture">Week 8 — Performance and evidence-driven architecture</h2>
+<h3 id="learn_7">Learn</h3>
+<ul>
+<li>Workload modelling</li>
+<li>Baselines and bottleneck identification</li>
+<li>Load, stress, soak, and failover tests</li>
+<li>Queuing effects</li>
+<li>Autoscaling signals</li>
+<li>Database and cache profiling</li>
+<li>Cost/performance trade-offs</li>
+</ul>
+<h3 id="build_7">Build</h3>
+<p>Run a load test against checkout and order-status paths. Report:</p>
+<ul>
+<li>p50, p95, and p99 latency</li>
+<li>throughput and error rate</li>
+<li>resource saturation</li>
+<li>queue depth</li>
+<li>scaling behaviour</li>
+<li>cost change</li>
+<li>failure threshold</li>
+</ul>
+<p>Azure Load Testing can support repeatable load and resilience validation.[38]</p>
+<h3 id="completion-test_7">Completion test</h3>
+<p>Every major scale claim in your design is backed by a measurement, calculation, or explicit assumption.</p>
+<h3 id="primary-resources_7">Primary resources</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/load-testing/">Azure Load Testing</a>[38]</li>
+<li>Google SRE books[9]</li>
+<li>Amazon Builders’ Library[10]</li>
+</ul>
+<hr />
+<h2 id="week-9-rag-and-governed-ai-applications">Week 9 — RAG and governed AI applications</h2>
+<h3 id="learn_8">Learn</h3>
+<ul>
+<li>Source-of-truth boundaries</li>
+<li>Ingestion, chunking, metadata, embeddings, and retrieval</li>
+<li>Access-control-aware retrieval</li>
+<li>Hybrid search and reranking</li>
+<li>Citations and grounding</li>
+<li>Evaluation datasets</li>
+<li>Quality, latency, and cost trade-offs</li>
+<li>Prompt injection and data exfiltration</li>
+</ul>
+<h3 id="build_8">Build</h3>
+<p>Create an AI support assistant that:</p>
+<ul>
+<li>Answers from approved product and order-policy content</li>
+<li>Retrieves only content the requesting identity may access</li>
+<li>Provides citations</li>
+<li>Refuses unsupported claims</li>
+<li>Records retrieval and model telemetry</li>
+<li>Runs a repeatable evaluation set</li>
+</ul>
+<p>Microsoft’s RAG guidance treats design and evaluation as an end-to-end architecture problem rather than only a prompt problem.[13]</p>
+<h3 id="completion-test_8">Completion test</h3>
+<p>You can separate retrieval failure, generation failure, authorization failure, and source-data failure in metrics and incident handling.</p>
+<h3 id="primary-resources_8">Primary resources</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-agentic">Agentic RAG on Azure</a>[13]</li>
+<li><a href="https://learn.microsoft.com/en-us/semantic-kernel/">Semantic Kernel</a>[14]</li>
+<li><a href="https://genai.owasp.org/initiatives/top-10-for-llm-and-genai/">OWASP LLM and GenAI Top 10</a>[16]</li>
+</ul>
+<hr />
+<h2 id="week-10-agentic-systems-and-safe-actions">Week 10 — Agentic systems and safe actions</h2>
+<h3 id="learn_9">Learn</h3>
+<ul>
+<li>Workflow versus autonomous agent</li>
+<li>Tool contracts and permission scoping</li>
+<li>Planning and orchestration</li>
+<li>Memory boundaries</li>
+<li>Human approval</li>
+<li>Durable execution</li>
+<li>Compensating action</li>
+<li>Agent evaluation and trace review</li>
+<li>Model routing and fallback</li>
+</ul>
+<h3 id="build_9">Build</h3>
+<p>Extend the support assistant so it can propose—but not autonomously execute—refunds. Add:</p>
+<ul>
+<li>Tool allowlist</li>
+<li>Per-user authorization</li>
+<li>Maximum refund limit</li>
+<li>Human approval</li>
+<li>Idempotency key</li>
+<li>Audit trail</li>
+<li>Timeout and unknown-outcome handling</li>
+<li>Evaluation cases for prompt injection, unauthorized refund, duplicate execution, and tool failure</li>
+</ul>
+<p>OpenAI’s agent guide describes agents as systems combining models, tools, and instructions; the architecture must constrain all three.[15]</p>
+<h3 id="completion-test_9">Completion test</h3>
+<p>You can identify which decisions are deterministic, which are model-driven, which are reversible, and which require approval.</p>
+<h3 id="primary-resources_9">Primary resources</h3>
+<ul>
+<li><a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf">Practical guide to building agents</a>[15]</li>
+<li>Azure agentic RAG guidance[13]</li>
+<li>Semantic Kernel documentation[14]</li>
+<li>OWASP LLM guidance[16]</li>
+</ul>
+<hr />
+<h2 id="week-11-architecture-review-and-stakeholder-communication">Week 11 — Architecture review and stakeholder communication</h2>
+<h3 id="learn_10">Learn</h3>
+<ul>
+<li>Executive-first communication</li>
+<li>Architecture review facilitation</li>
+<li>Decision framing</li>
+<li>Handling disagreement</li>
+<li>Risk acceptance</li>
+<li>Roadmaps and migration sequencing</li>
+<li>Presenting cost and business impact</li>
+</ul>
+<h3 id="build_10">Build</h3>
+<p>Prepare three versions of the same design:</p>
+<ul>
+<li>90-second executive explanation</li>
+<li>10-minute architecture-review presentation</li>
+<li>Detailed engineering handover</li>
+</ul>
+<p>Run an architecture kata with a mentor or peer. Architectural Katas are designed specifically for practising architecture through realistic scenarios.[40]</p>
+<h3 id="completion-test_10">Completion test</h3>
+<p>You can lead with the decision, impact, evidence, risk, and ask—without walking executives through every component.</p>
+<h3 id="primary-resources_10">Primary resources</h3>
+<ul>
+<li><a href="https://www.architecturalkatas.com/about.html">Architectural Katas</a>[40]</li>
+<li><em>The Staff Engineer’s Path</em></li>
+<li><em>Team Topologies</em></li>
+<li>ADR guidance[6]</li>
+</ul>
+<hr />
+<h2 id="week-12-capstone-defence-and-interview-readiness">Week 12 — Capstone defence and interview readiness</h2>
+<h3 id="final-scenario">Final scenario</h3>
+<p>A retailer wants an AI-assisted customer-operations platform in eight weeks. It must integrate with legacy order systems, process payment and refund operations safely, support multiple countries, protect personal data, survive partner outages, and remain within a fixed Azure budget.</p>
+<h3 id="deliverables">Deliverables</h3>
+<ul>
+<li>Requirements and assumptions</li>
+<li>Context, container, sequence, state, and deployment diagrams</li>
+<li>Data model and consistency strategy</li>
+<li>API and event contracts</li>
+<li>ADR set</li>
+<li>Threat model</li>
+<li>Reliability and disaster-recovery plan</li>
+<li>Cost estimate</li>
+<li>Load-test report</li>
+<li>AI evaluation report</li>
+<li>Operations runbook</li>
+<li>Migration roadmap</li>
+<li>Executive presentation</li>
+</ul>
+<h3 id="defence-questions">Defence questions</h3>
+<ul>
+<li>Why not use microservices immediately?</li>
+<li>Why this database?</li>
+<li>What does a payment timeout mean?</li>
+<li>Where can duplicate business effects occur?</li>
+<li>What fails if the model or vector index is unavailable?</li>
+<li>How is identity propagated into agent tools?</li>
+<li>What action requires human approval?</li>
+<li>What is the first scaling limit?</li>
+<li>What would you remove if the budget were cut by 40%?</li>
+<li>What evidence would make you reverse the decision?</li>
+</ul>
+<hr />
+<h1 id="3-certification-strategy-for-current-architect-roles">3. Certification strategy for current architect roles</h1>
+<h2 id="31-market-reading">3.1 Market reading</h2>
+<p>A targeted scan of current Azure and AI architecture postings—not a statistical census—shows <strong>Azure Solutions Architect Expert (AZ-305)</strong> recurring consistently in sampled roles.[26][27]</p>
+<p>Current postings also mention AZ-104, AZ-400, AI-103, AB-100, security credentials, Terraform, and Kubernetes according to specialization.[28][29]</p>
+<p>Do not optimize for collecting badges. Use certifications to validate a portfolio that already shows design and delivery ability.</p>
+<h2 id="32-priority-1-azure-solutions-architect-expert">3.2 Priority 1 — Azure Solutions Architect Expert</h2>
+<h3 id="path">Path</h3>
+<ol>
+<li><strong>Azure Administrator Associate (AZ-104)</strong></li>
+<li><strong>AZ-305: Designing Microsoft Azure Infrastructure Solutions</strong></li>
+<li>Earn <strong>Microsoft Certified: Azure Solutions Architect Expert</strong></li>
+</ol>
+<p>Microsoft currently lists Azure Administrator Associate as the prerequisite certification and AZ-305 as the required architect exam.[17][31]</p>
+<h3 id="why-prioritize-it">Why prioritize it</h3>
+<ul>
+<li>Directly aligned with Azure Solutions Architect and Cloud Architect titles</li>
+<li>Covers identity, governance, monitoring, data, continuity, and infrastructure design</li>
+<li>Commonly named in Azure architecture postings from consultancies and enterprise employers[26][27][28]</li>
+</ul>
+<h3 id="evidence-required-beyond-the-exam">Evidence required beyond the exam</h3>
+<ul>
+<li>Landing-zone design</li>
+<li>Identity and network boundaries</li>
+<li>Migration plan</li>
+<li>Availability and disaster recovery</li>
+<li>Cost model</li>
+<li>Well-Architected review</li>
+</ul>
+<h2 id="33-priority-2-azure-ai-apps-and-agents-developer-associate">3.3 Priority 2 — Azure AI Apps and Agents Developer Associate</h2>
+<h3 id="current-exam">Current exam</h3>
+<p><strong>AI-103: Developing AI Apps and Agents on Azure</strong></p>
+<p>Microsoft positions AI-103 around planning and managing Azure AI solutions and implementing generative-AI and agentic systems with Microsoft Foundry.[18]</p>
+<h3 id="important-update">Important update</h3>
+<p>Do <strong>not</strong> start new preparation for AI-102. Microsoft retired AI-102 on 30 June 2026; AI-103 is the current replacement path.[30]</p>
+<h3 id="why-prioritize-it_1">Why prioritize it</h3>
+<ul>
+<li>Strong fit for AI architect and FDE roles</li>
+<li>Forces hands-on implementation rather than architecture vocabulary alone</li>
+<li>Supports a credible agentic-AI portfolio</li>
+</ul>
+<h3 id="evidence-required-beyond-the-exam_1">Evidence required beyond the exam</h3>
+<ul>
+<li>Working agent</li>
+<li>RAG pipeline</li>
+<li>Evaluation dataset</li>
+<li>Security and authorization tests</li>
+<li>Observability and cost report</li>
+</ul>
+<h2 id="34-priority-3-agentic-ai-business-solutions-architect-expert">3.4 Priority 3 — Agentic AI Business Solutions Architect Expert</h2>
+<h3 id="current-exam_1">Current exam</h3>
+<p><strong>AB-100: Agentic AI Business Solutions Architect</strong></p>
+<p>The expert credential requires AB-100 plus an eligible associate-level prerequisite such as AI-103. Microsoft describes the role around AI-driven business solutions, cross-platform integration, responsible AI, and multi-agent orchestration.[19]</p>
+<h3 id="when-to-pursue">When to pursue</h3>
+<p>Pursue after AI-103 if targeting:</p>
+<ul>
+<li>AI Solutions Architect</li>
+<li>Copilot/Power Platform architecture</li>
+<li>Agentic transformation consulting</li>
+<li>Customer-facing Microsoft solution roles</li>
+</ul>
+<p>Do not place AB-100 ahead of core cloud architecture and hands-on agent delivery.</p>
+<h2 id="35-specialization-credentials">3.5 Specialization credentials</h2>
+<h3 id="devops-and-platform-architecture">DevOps and platform architecture</h3>
+<p><strong>AZ-400: DevOps Engineer Expert</strong> — valuable when roles emphasize CI/CD, GitHub Actions, Azure DevOps, infrastructure delivery, compliance, and observability. Microsoft requires AZ-400 plus an eligible associate credential.[20]</p>
+<h3 id="cloud-and-ai-security">Cloud and AI security</h3>
+<p><strong>SC-500: Cloud and AI Security Engineer Associate</strong> — the current implementation-oriented security credential for Azure, hybrid, and AI workloads.[21]</p>
+<p><strong>SC-100: Cybersecurity Architect Expert</strong> — useful for security architecture, Zero Trust, regulated industries, and governance-heavy roles. It requires SC-100 plus an eligible associate security credential such as SC-500.[22]</p>
+<p>Do not start AZ-500: it retired in August 2026 and has been replaced by the newer security path.[21]</p>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<p><strong>HashiCorp Terraform Associate</strong> — useful when target roles explicitly request Terraform or multi-cloud IaC. The current Associate exam validates foundational Terraform workflows, state, configuration, and IaC concepts.[24]</p>
+<h3 id="kubernetes">Kubernetes</h3>
+<p><strong>CKA</strong> — pursue only when target roles require AKS/Kubernetes platform depth. The CNCF exam is a two-hour performance-based command-line assessment.[23]</p>
+<h3 id="enterprise-architecture">Enterprise architecture</h3>
+<p><strong>TOGAF Enterprise Architecture Foundation/Practitioner</strong> — useful for enterprise architecture, consulting, governance, capability mapping, and formal architecture-board roles. The Open Group’s current portfolio includes TOGAF Standard 10th Edition paths.[25]</p>
+<h2 id="36-recommended-certification-order">3.6 Recommended certification order</h2>
+<h3 id="core-azurefde-route">Core Azure/FDE route</h3>
+<ol>
+<li>AZ-104, unless already held or genuinely mastered</li>
+<li>AZ-305</li>
+<li>AI-103</li>
+<li>AB-100</li>
+</ol>
+<h3 id="platform-heavy-route">Platform-heavy route</h3>
+<ol>
+<li>AZ-104</li>
+<li>AZ-305</li>
+<li>AZ-400</li>
+<li>Terraform Associate</li>
+<li>CKA only if job descriptions require Kubernetes</li>
+</ol>
+<h3 id="security-heavy-route">Security-heavy route</h3>
+<ol>
+<li>AZ-104</li>
+<li>AZ-305</li>
+<li>SC-500</li>
+<li>SC-100</li>
+</ol>
+<h3 id="enterprise-consulting-route">Enterprise-consulting route</h3>
+<ol>
+<li>AZ-104</li>
+<li>AZ-305</li>
+<li>TOGAF Enterprise Architecture Foundation/Practitioner</li>
+<li>AI-103 or AB-100 depending on delivery focus</li>
+</ol>
+<h2 id="37-what-not-to-prioritize">3.7 What not to prioritize</h2>
+<ul>
+<li>Fundamentals badges when you already possess demonstrable professional experience, unless a specific employer requires them</li>
+<li>Retired AI-102 or AZ-500 preparation[21][30]</li>
+<li>Multi-cloud certifications without a target role that values them</li>
+<li>CKA without hands-on Kubernetes responsibility</li>
+<li>TOGAF as a substitute for cloud, data, integration, and operational design</li>
+</ul>
+<hr />
+<h1 id="4-targeted-resource-library">4. Targeted resource library</h1>
+<h2 id="p0-use-throughout-the-roadmap">P0 — Use throughout the roadmap</h2>
+<h3 id="architecture-and-azure">Architecture and Azure</h3>
+<ul>
+<li>Azure Architecture Center[1]</li>
+<li>Azure Well-Architected Framework[2]</li>
+<li>Azure Cloud Design Patterns[3]</li>
+<li>Cloud Adoption Framework[4]</li>
+<li>C4 Model[5]</li>
+<li>ADR guidance[6]</li>
+</ul>
+<h3 id="distributed-systems-and-reliability">Distributed systems and reliability</h3>
+<ul>
+<li><em>Designing Data-Intensive Applications, 2nd Edition</em>[7]</li>
+<li>MIT 6.5840 Distributed Systems[8]</li>
+<li>Google SRE books[9]</li>
+<li>Amazon Builders’ Library[10]</li>
+</ul>
+<h3 id="apis-and-integration">APIs and integration</h3>
+<ul>
+<li>Microsoft REST API Guidelines[11]</li>
+<li>AsyncAPI[12]</li>
+<li>OWASP API Security[39]</li>
+<li><em>Enterprise Integration Patterns</em></li>
+<li><em>Release It!</em></li>
+</ul>
+<h3 id="ai-and-agents">AI and agents</h3>
+<ul>
+<li>Azure agentic-RAG architecture guide[13]</li>
+<li>Semantic Kernel documentation[14]</li>
+<li>OpenAI practical agent guide[15]</li>
+<li>OWASP LLM and GenAI Top 10[16]</li>
+</ul>
+<h2 id="p1-use-for-specific-gaps">P1 — Use for specific gaps</h2>
+<h3 id="software-architecture-books">Software architecture books</h3>
+<ul>
+<li><em>Fundamentals of Software Architecture</em></li>
+<li><em>Software Architecture: The Hard Parts</em></li>
+<li><em>Building Evolutionary Architectures</em></li>
+<li><em>Building Microservices</em></li>
+<li><em>Monolith to Microservices</em></li>
+<li><em>Domain-Driven Design Distilled</em></li>
+</ul>
+<h3 id="leadership-and-organization">Leadership and organization</h3>
+<ul>
+<li><em>The Staff Engineer’s Path</em></li>
+<li><em>Team Topologies</em></li>
+<li><em>Accelerate</em></li>
+</ul>
+<h3 id="practice">Practice</h3>
+<ul>
+<li>Architectural Katas[40]</li>
+<li>System Design Primer</li>
+<li>Azure reference architectures</li>
+<li>Weekly mentor review</li>
+<li>Mock architecture-review panels</li>
+</ul>
+<h2 id="p2-optional-interview-support">P2 — Optional interview support</h2>
+<ul>
+<li>ByteByteGo for visual refreshers</li>
+<li>Hello Interview for structured mock practice</li>
+<li>Educative or Design Gurus for guided question sets</li>
+<li>Exponent for interview demonstrations</li>
+</ul>
+<p>Treat commercial solutions as examples to critique. Never memorize a diagram without reconstructing it from requirements.</p>
+<hr />
+<h1 id="5-weekly-operating-rhythm">5. Weekly operating rhythm</h1>
+<h2 id="monday-learn-and-frame">Monday — Learn and frame</h2>
+<ul>
+<li>60–90 minutes of primary-source reading</li>
+<li>Rewrite the problem in your own words</li>
+<li>Identify three unknowns</li>
+</ul>
+<h2 id="tuesday-design">Tuesday — Design</h2>
+<ul>
+<li>Produce one diagram</li>
+<li>Write one ADR</li>
+<li>Add failure paths</li>
+</ul>
+<h2 id="wednesday-build">Wednesday — Build</h2>
+<ul>
+<li>Implement the thinnest vertical slice</li>
+<li>Record telemetry</li>
+<li>Trigger one controlled failure</li>
+</ul>
+<h2 id="thursday-review">Thursday — Review</h2>
+<ul>
+<li>Present to a mentor or peer</li>
+<li>Capture objections without defending immediately</li>
+<li>Revise the design</li>
+</ul>
+<h2 id="friday-explain">Friday — Explain</h2>
+<p>Produce:</p>
+<ul>
+<li>30-second answer</li>
+<li>5-minute engineering explanation</li>
+<li>One executive summary</li>
+<li>One “what would change my decision?” statement</li>
+</ul>
+<h2 id="weekend-certification-lane">Weekend — Certification lane</h2>
+<p>Use certification study guides to detect gaps, then close each gap through a lab. Avoid exam-dump preparation.</p>
+<hr />
+<h1 id="6-architecture-review-scorecard">6. Architecture review scorecard</h1>
+<p>Score each dimension from 0 to 2:</p>
+<ul>
+<li>Requirements are measurable</li>
+<li>Constraints and assumptions are explicit</li>
+<li>Boundaries and ownership are clear</li>
+<li>Data consistency is justified</li>
+<li>API and event contracts are versioned</li>
+<li>Retries are bounded and idempotent</li>
+<li>Unknown outcomes have reconciliation</li>
+<li>Security is layered</li>
+<li>AI tools inherit least privilege</li>
+<li>Reliability targets map to mechanisms</li>
+<li>Observability covers technical and business outcomes</li>
+<li>Cost scales with workload assumptions</li>
+<li>Deployment and rollback are defined</li>
+<li>Alternatives and exit criteria are documented</li>
+<li>The design can be explained to multiple audiences</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>24–30: ready for a formal review</li>
+<li>17–23: credible but has important gaps</li>
+<li>10–16: architecture vocabulary without enough evidence</li>
+<li>Below 10: return to requirements and boundaries</li>
+</ul>
+<hr />
+<h1 id="7-final-production-readiness-checklist">7. Final production-readiness checklist</h1>
+<h2 id="design">Design</h2>
+<ul>
+<li>☐ Requirements and constraints are approved</li>
+<li>☐ Context and deployment diagrams are current</li>
+<li>☐ ADRs record major decisions and exit criteria</li>
+<li>☐ Data ownership and consistency are explicit</li>
+<li>☐ External dependencies have isolation and reconciliation</li>
+</ul>
+<h2 id="security">Security</h2>
+<ul>
+<li>☐ Threat model completed</li>
+<li>☐ Managed identity and least privilege used</li>
+<li>☐ Secrets are not embedded</li>
+<li>☐ Data classification and retention defined</li>
+<li>☐ Agent tool permissions are scoped</li>
+<li>☐ Prompt-injection and exfiltration tests exist</li>
+</ul>
+<h2 id="reliability">Reliability</h2>
+<ul>
+<li>☐ SLOs and dependency budgets defined</li>
+<li>☐ Retry, timeout, backoff, and idempotency policies documented</li>
+<li>☐ Dead-letter and poison-message procedures tested</li>
+<li>☐ RTO/RPO and recovery exercise completed</li>
+<li>☐ Graceful degradation defined</li>
+</ul>
+<h2 id="delivery-and-operations">Delivery and operations</h2>
+<ul>
+<li>☐ Infrastructure is reproducible</li>
+<li>☐ CI/CD includes security and quality gates</li>
+<li>☐ Rollback tested</li>
+<li>☐ Metrics, logs, traces, and business telemetry available</li>
+<li>☐ Alerts have owners and runbooks</li>
+<li>☐ Cost budgets and anomaly alerts configured</li>
+</ul>
+<h2 id="ai-quality">AI quality</h2>
+<ul>
+<li>☐ Evaluation dataset versioned</li>
+<li>☐ Grounding and citation quality measured</li>
+<li>☐ Authorization evaluated separately from answer quality</li>
+<li>☐ Model and retrieval failures distinguishable</li>
+<li>☐ Human approval protects consequential actions</li>
+<li>☐ Audit records connect user, model, tool, and outcome</li>
+</ul>
+<hr />
+<h1 id="8-the-shortest-effective-path">8. The shortest effective path</h1>
+<p>If time is limited, do these ten things:</p>
+<ol>
+<li>Study the Azure Well-Architected Framework.[2]</li>
+<li>Learn C4 and ADRs.[5][6]</li>
+<li>Read the most relevant chapters of <em>Designing Data-Intensive Applications</em>.[7]</li>
+<li>Design one payment workflow with unknown-outcome recovery.</li>
+<li>Build one C#/.NET asynchronous workflow.</li>
+<li>Deploy it with identity, networking, monitoring, and cost controls.</li>
+<li>Add one governed RAG path.</li>
+<li>Add one agent tool with human approval and idempotency.</li>
+<li>Run a load test and architecture review.</li>
+<li>Complete AZ-104/AZ-305 and AI-103 in the order appropriate to your existing credentials.[17][18][31]</li>
+</ol>
+<p>The goal is not to know every possible architecture. The goal is to make a defensible decision, identify where certainty ends, validate the risky assumptions, and communicate the result clearly.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><strong>[1]</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture">learn.microsoft.com — azure / architecture</a></li>
+<li><strong>[2]</strong> <a href="https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework">learn.microsoft.com — well-architected / what-is-well-architected-framework</a></li>
+<li><strong>[3]</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns">learn.microsoft.com — architecture / patterns</a></li>
+<li><strong>[4]</strong> <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview">learn.microsoft.com — cloud-adoption-framework / overview</a></li>
+<li><strong>[5]</strong> <a href="https://c4model.com/diagrams.html">c4model.com — diagrams.html</a></li>
+<li><strong>[6]</strong> <a href="https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record">learn.microsoft.com — architect-role / architecture-decision-record</a></li>
+<li><strong>[7]</strong> <a href="https://www.oreilly.com/library/view/designing-data-intensive/9781098119058">www.oreilly.com — designing-data-intensive / 9781098119058</a></li>
+<li><strong>[8]</strong> <a href="https://pdos.csail.mit.edu/6.824/index.html">pdos.csail.mit.edu — 6.824 / index.html</a></li>
+<li><strong>[9]</strong> <a href="https://sre.google/books">sre.google — books</a></li>
+<li><strong>[10]</strong> <a href="https://builder.aws.com/learn/topics/builders-library">builder.aws.com — topics / builders-library</a></li>
+<li><strong>[11]</strong> <a href="https://github.com/microsoft/api-guidelines">github.com — microsoft / api-guidelines</a></li>
+<li><strong>[12]</strong> <a href="https://www.asyncapi.com">www.asyncapi.com — home</a></li>
+<li><strong>[13]</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-agentic">learn.microsoft.com — rag / rag-agentic</a></li>
+<li><strong>[14]</strong> <a href="https://learn.microsoft.com/en-us/semantic-kernel">learn.microsoft.com — en-us / semantic-kernel</a></li>
+<li><strong>[15]</strong> <a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf">cdn.openai.com — business-guides-and-resources / a-practical-guide-to-building-agents.pdf</a></li>
+<li><strong>[16]</strong> <a href="https://genai.owasp.org/initiatives/top-10-for-llm-and-genai">genai.owasp.org — initiatives / top-10-for-llm-and-genai</a></li>
+<li><strong>[17]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect">learn.microsoft.com — certifications / azure-solutions-architect</a></li>
+<li><strong>[18]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate">learn.microsoft.com — certifications / azure-ai-apps-and-agents-developer-associate</a></li>
+<li><strong>[19]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-business-solutions-architect">learn.microsoft.com — certifications / agentic-ai-business-solutions-architect</a></li>
+<li><strong>[20]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer">learn.microsoft.com — certifications / devops-engineer</a></li>
+<li><strong>[21]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/cloud-and-ai-security-engineer-associate">learn.microsoft.com — certifications / cloud-and-ai-security-engineer-associate</a></li>
+<li><strong>[22]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/cybersecurity-architect-expert">learn.microsoft.com — certifications / cybersecurity-architect-expert</a></li>
+<li><strong>[23]</strong> <a href="https://www.cncf.io/training/certification/cka">www.cncf.io — certification / cka</a></li>
+<li><strong>[24]</strong> <a href="https://developer.hashicorp.com/certifications/terraform-associate">developer.hashicorp.com — certifications / terraform-associate</a></li>
+<li><strong>[25]</strong> <a href="https://www.opengroup.org/certifications/togaf-certification-portfolio">www.opengroup.org — certifications / togaf-certification-portfolio</a></li>
+<li><strong>[26]</strong> <a href="https://jobs.lever.co/lvs1/6e441599-b9a0-43bb-8f05-a383004e1f4e">jobs.lever.co — lvs1 / 6e441599-b9a0-43bb-8f05-a383004e1f4e</a></li>
+<li><strong>[27]</strong> <a href="https://jobs.lever.co/fp/a6addff8-f69a-4b0f-86db-d3877ed6c2d5">jobs.lever.co — fp / a6addff8-f69a-4b0f-86db-d3877ed6c2d5</a></li>
+<li><strong>[28]</strong> <a href="https://jobs.lever.co/atmosera/20ee35c1-e7d0-4cc8-99d3-8d3c5c1b0677">jobs.lever.co — atmosera / 20ee35c1-e7d0-4cc8-99d3-8d3c5c1b0677</a></li>
+<li><strong>[29]</strong> <a href="https://jobs.lever.co/thinkahead/3595a68c-61a7-4d0c-91d4-914fa9803cbd">jobs.lever.co — thinkahead / 3595a68c-61a7-4d0c-91d4-914fa9803cbd</a></li>
+<li><strong>[30]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-102">learn.microsoft.com — study-guides / ai-102</a></li>
+<li><strong>[31]</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator">learn.microsoft.com — certifications / azure-administrator</a></li>
+<li><strong>[32]</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree">learn.microsoft.com — technology-choices / compute-decision-tree</a></li>
+<li><strong>[33]</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture/guide/container-service-general-considerations">learn.microsoft.com — guide / container-service-general-considerations</a></li>
+<li><strong>[34]</strong> <a href="https://learn.microsoft.com/en-us/azure/well-architected/reliability/checklist">learn.microsoft.com — reliability / checklist</a></li>
+<li><strong>[35]</strong> <a href="https://learn.microsoft.com/en-us/azure/well-architected/security/threat-model">learn.microsoft.com — security / threat-model</a></li>
+<li><strong>[36]</strong> <a href="https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/observability">learn.microsoft.com — operational-excellence / observability</a></li>
+<li><strong>[37]</strong> <a href="https://azure.microsoft.com/en-us/pricing/calculator">azure.microsoft.com — pricing / calculator</a></li>
+<li><strong>[38]</strong> <a href="https://learn.microsoft.com/en-us/azure/load-testing">learn.microsoft.com — azure / load-testing</a></li>
+<li><strong>[39]</strong> <a href="https://owasp.org/API-Security">owasp.org — API-Security</a></li>
+<li><strong>[40]</strong> <a href="https://www.architecturalkatas.com/about.html">www.architecturalkatas.com — about.html</a></li>
+</ul></main>
+</body></html>

@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://learn.microsoft.com/en-us/azure/architecture",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 2,
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 3,
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 4,
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 5,
+      "url": "https://c4model.com/diagrams.html",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 6,
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 7,
+      "url": "https://www.oreilly.com/library/view/designing-data-intensive/9781098119058",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 8,
+      "url": "https://pdos.csail.mit.edu/6.824/index.html",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 9,
+      "url": "https://sre.google/books",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 10,
+      "url": "https://builder.aws.com/learn/topics/builders-library",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 11,
+      "url": "https://github.com/microsoft/api-guidelines",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 12,
+      "url": "https://www.asyncapi.com",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 13,
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-agentic",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 14,
+      "url": "https://learn.microsoft.com/en-us/semantic-kernel",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 15,
+      "url": "https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 16,
+      "url": "https://genai.owasp.org/initiatives/top-10-for-llm-and-genai",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 17,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 18,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 19,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-business-solutions-architect",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 20,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 21,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/cloud-and-ai-security-engineer-associate",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 22,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/cybersecurity-architect-expert",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 23,
+      "url": "https://www.cncf.io/training/certification/cka",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 24,
+      "url": "https://developer.hashicorp.com/certifications/terraform-associate",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 25,
+      "url": "https://www.opengroup.org/certifications/togaf-certification-portfolio",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 26,
+      "url": "https://jobs.lever.co/lvs1/6e441599-b9a0-43bb-8f05-a383004e1f4e",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 27,
+      "url": "https://jobs.lever.co/fp/a6addff8-f69a-4b0f-86db-d3877ed6c2d5",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 28,
+      "url": "https://jobs.lever.co/atmosera/20ee35c1-e7d0-4cc8-99d3-8d3c5c1b0677",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 29,
+      "url": "https://jobs.lever.co/thinkahead/3595a68c-61a7-4d0c-91d4-914fa9803cbd",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 30,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-102",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 31,
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 32,
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 33,
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/container-service-general-considerations",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 34,
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/reliability/checklist",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 35,
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/security/threat-model",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 36,
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/observability",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 37,
+      "url": "https://azure.microsoft.com/en-us/pricing/calculator",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 38,
+      "url": "https://learn.microsoft.com/en-us/azure/load-testing",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 39,
+      "url": "https://owasp.org/API-Security",
+      "title": "",
+      "accessed": "2026-10-24"
+    },
+    {
+      "id": 40,
+      "url": "https://www.architecturalkatas.com/about.html",
+      "title": "",
+      "accessed": "2026-10-24"
+    }
+  ]
+}

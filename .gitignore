@@ -1,0 +1,3 @@
+previews/
+*.tmp.pdf
+__pycache__/
